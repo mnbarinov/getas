@@ -163,3 +163,5 @@ getas youtube.com -r
  - GitHub: https://github.com/mnbarinov
 
  - Сайт: https://mbarinov.ru
+
+<img src="getas-footer.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
