@@ -54,6 +54,8 @@ echo "alias getas='getas --lang ru'" >> ~/.bashrc
 source ~/.bashrc
 ```
 
+---
+
 ## Примеры использования
 
 ### Получение информации об автономной системе по номеру AS, и сетей анонсируемых AS:
@@ -72,7 +74,7 @@ getas 15169 --no-merge
 ```
 getas 8.8.8.8
 ```
-### Получение информации об автономной системе по IP-адресу, и сетей анонсируемых AS:
+### Получение информации об автономной системе для IP и сетей анонсируемых AS:
 ```
 getas 8.8.8.8 -r
 ```
@@ -93,6 +95,9 @@ getas mbarinov.ru -r --lang {ru,en}
 getas --help
 getas help
 ```
+
+---
+
 
 ## Использование getas в Windows
 
@@ -139,7 +144,7 @@ getas youtube.com -r
 Теперь вы можете легко использовать `getas` в операционной системе Windows.
 
 
-
+---
 
 ## Снимки экрана
 
@@ -148,6 +153,8 @@ getas youtube.com -r
 <img src="getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 <img src="getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+---
 
 ## Автор
 
