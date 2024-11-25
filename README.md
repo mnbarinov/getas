@@ -1,5 +1,5 @@
 # GetAS
-<img src="getas_banner.jpg" alt="ASROUTE2 - Fetch &amp; Merge Autonomous System Networks" width=100% align=center >
+<img src="getas_banner.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 `getas` — это удобный инструмент для анализа информации об `автономных системах` (AS), маршрутах и `объединении сетей`. Скрипт поддерживает работу как с IP-адресами и сетями, так и с доменными именами или номерами AS. Основные функции включают возможность получения детальной информации об `AS`, агрегацию сетей и форматированный вывод на `русском` и `английском` языках.
 
@@ -83,3 +83,18 @@ getas mbarinov.ru -r --lang {ru,en}
 getas --help
 getas help
 ```
+## Снимки экрана
+
+<img src="getas_screenshot1.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+<img src="getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+<img src="getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+## Автор
+
+Михаил Баринов
+
+ - GitHub: https://github.com/mnbarinov
+
+ - Сайт: https://mbarinov.ru
