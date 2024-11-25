@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# getas by Mikhail Barinov
+
 import subprocess
 import ipaddress
 import sys
@@ -17,6 +17,7 @@ TRANSLATIONS = {
         "arg_mask": "Convert the subnet mask to binary format.",
         "arg_lang": "Language for output.",
         "arg_help": "Extended help.",
+        "arg_nomerge": "Do not merge networks.",
         "arg_lang_choices": ["English", "Russian"],
         "error_whois": "Error executing whois",
         "whois_not_found": "Whois command not found. Ensure it is installed.",
@@ -32,6 +33,7 @@ TRANSLATIONS = {
         "allocated": "Allocated:",
         "as_name": "AS Name:",
         "merged_networks": "\033[1mMerged Networks:\033[0m",
+        "networks": "\033[1mNetworks:\033[0m",
         "nested_networks": "Filtered Networks (without nested):",
         "no_info": "1mNo information found for",
         "please_wait":"\033[3m(Please wait...)\033[0m",
@@ -42,14 +44,13 @@ This script analyzes AS and routes with network aggregation.
 \033[1mExamples:\033[0m
   getas 15169
   getas 15169 --tolerance 8
-
+  getas 15169 --no-merge
+  getas 15169 --tolerance 8 -m --no-merge
+  
   getas 8.8.8.8
   getas 8.8.8.8 -r
-  getas 8.8.8.8 -m
-
-  getas mbarinov.ru  
-  getas mbarinov.ru -r
-  getas mbarinov.ru -r -m
+  getas 8.8.8.8 -m 
+  getas mbarinov.ru -r -m --no-merge
 
   getas --help
   getas --help --lang ru
@@ -67,6 +68,7 @@ getas by Mikhail Barinov, version 1.0 (24.11.2024)
         "arg_retrieve": "Получить и объединить маршруты для найденного AS.",
         "arg_lang": "Язык вывода.",
         "arg_help": "Расширенная справка.",
+        "arg_nomerge": "Не объединять сети.",
         "arg_mask": "Преобразовать маску подсети в двоичный формат.",
         "arg_lang_choices": ["Английский", "Русский"],
         "error_whois": "Ошибка выполнения whois",
@@ -83,6 +85,7 @@ getas by Mikhail Barinov, version 1.0 (24.11.2024)
         "allocated": "Выделено:",
         "as_name": "Название AS:",
         "merged_networks": "\033[1mОбъединённые сети:\033[0m",
+        "networks": "\033[1mСети:\033[0m",
         "nested_networks": "Сети без вложенных:",
         "no_info": "Нет информации о",
         "please_wait":"\033[3m(Пожалуйста подождите...)\033[0m",
@@ -93,14 +96,13 @@ getas by Mikhail Barinov, version 1.0 (24.11.2024)
 \033[1mПримеры:\033[0m
   getas 15169
   getas 15169 --tolerance 8
+  getas 15169 --no-merge
+  getas 15169 --tolerance 8 -m --no-merge
   
   getas 8.8.8.8
   getas 8.8.8.8 -r
-  getas 8.8.8.8 -m
-  
-  getas mbarinov.ru  
-  getas mbarinov.ru -r
-  getas mbarinov.ru -r -m
+  getas 8.8.8.8 -m 
+  getas mbarinov.ru -r -m --no-merge
 
   getas --help
   getas --help --lang en
@@ -261,6 +263,7 @@ def arg_parse(lang="en"):
     parser.add_argument("-m", action="store_true", help=translate("arg_mask", lang))
     parser.add_argument("--lang", choices=["ru", "en"], default="en",  help=translate("arg_lang", lang))
     parser.add_argument("help", action="store_true", help=translate("arg_help", lang))
+    parser.add_argument("--no-merge", action="store_true", help=translate("arg_nomerge", lang))
     return parser
 
 
@@ -328,6 +331,7 @@ def main():
         if input_value.lower() in {"help", "--help", "-h"}:
             print_usage(args.lang)
             sys.exit(0)
+        
 
         if not input_value.isdigit():
             ip = get_ip_from_hostname(input_value)
@@ -340,8 +344,15 @@ def main():
                 print(f"{translate('no_routes', args.lang)} AS{input_value}.")
                 return
 
-            merged_routes = merge_networks(routes, args.tolerance)
-            filtered_routes = filter_nested_networks(merged_routes)
+            # merged_routes = merge_networks(routes, args.tolerance)
+            # filtered_routes = filter_nested_networks(merged_routes)
+
+            if args.no_merge == False:
+                merged_routes = merge_networks(routes, args.tolerance)
+                filtered_routes = filter_nested_networks(merged_routes)
+            else:
+                filtered_routes = filter_nested_networks(routes)
+                print(translate("networks", args.lang))
 
 
             first=filtered_routes[0]
@@ -351,10 +362,13 @@ def main():
                 return
             print_as_info(as_info2, lang=args.lang)
 
-            
 
-            print(translate("merged_networks", args.lang))
-            
+            if args.no_merge == False:
+                print(translate("merged_networks", args.lang))
+            else:
+                print(translate("networks", args.lang))
+
+
             for net in filtered_routes:
                 if args.m:
                     ip = str(net.network_address)  # Получаем IP-адрес сети
@@ -362,6 +376,7 @@ def main():
                     print(f"{ip}/{cidr_to_netmask(mask)}")  # Печатаем IP-адрес и маску в нужном формате
                 else:    
                     print(net)
+                    
         else:
             as_info = fetch_as_info(input_value)
             if not as_info:
@@ -372,18 +387,25 @@ def main():
 
             
             if args.r:
-                print(translate("merged_networks", args.lang))
+                if args.no_merge == False:
+                    print(translate("merged_networks", args.lang))
+                else:
+                    print(translate("networks", args.lang))
 
-                
 
                 for as_number, *_ in as_info:
                     routes = fetch_routes(as_number)
                     if(len(routes) > 50):
                         print(translate(f"please_wait", args.lang))
-                    merged_routes = merge_networks(routes, args.tolerance)
-                    filtered_routes = filter_nested_networks(merged_routes)
-
+                                        
                     
+                    if args.no_merge == False:
+                        merged_routes = merge_networks(routes, args.tolerance)
+                        filtered_routes = filter_nested_networks(merged_routes)
+                    else:
+                        filtered_routes = filter_nested_networks(routes)
+
+
                     for net in filtered_routes:
                         if args.m:
                             ip = str(net.network_address)  # Получаем IP-адрес сети
