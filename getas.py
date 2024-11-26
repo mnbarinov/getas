@@ -55,7 +55,7 @@ This script analyzes AS and routes with network aggregation.
   getas --help
   getas --help --lang ru
 
-getas by Mikhail Barinov, version 1.0 (24.11.2024)
+getas by Mikhail Barinov, version 1.0.2 (24.11.2024)
     https://mbarinov.ru
     https://github.com/mnbarinov/getas
 """,
@@ -107,7 +107,7 @@ getas by Mikhail Barinov, version 1.0 (24.11.2024)
   getas --help
   getas --help --lang en
 
-getas by Mikhail Barinov, version 1.0 (24.11.2024)
+getas by Mikhail Barinov, version 1.0.2 (24.11.2024)
     https://mbarinov.ru
     https://github.com/mnbarinov/getas
 """,
