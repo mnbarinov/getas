@@ -23,7 +23,17 @@ getas youtube.com -r
 ```
 git clone https://github.com/mnbarinov/getas.git
 cd getas
+chmod +x $(pwd)/getas.py
 ```
+
+### Установка скрипта
+
+Для удобства использования создайте символическую ссылку:
+```
+sudo ln -s $(pwd)/getas.py /usr/local/bin/getas
+```
+Теперь вы можете запускать скрипт командой `getas`.
+
 ### Установка зависимостей
 
 Для работы скрипта требуются Python 3 и команды whois. Установите их, если они отсутствуют:
@@ -39,13 +49,7 @@ sudo apt install python3 python3-pip whois
 sudo dnf install python3 python3-pip whois
 ```
 
-### Установка скрипта
 
-Для удобства использования создайте символическую ссылку:
-```
-sudo ln -s $(pwd)/getas.py /usr/local/bin/getas
-```
-Теперь вы можете запускать скрипт командой `getas`.
 
 ### Рекомендуемая настройка языка
 
