@@ -36,6 +36,8 @@ To make the script easier to use, create a symbolic link:
 sudo ln -s $(pwd)/getas.py /usr/local/bin/getas
 ```
 
+Now you can run the script using the command `getas`.
+
 ### Install dependencies
 
 The script requires Python 3 and the whois command. Install them if they are not already available:
@@ -51,9 +53,6 @@ sudo apt install python3 python3-pip whois
 sudo dnf install python3 python3-pip whois
 ```
 
-
-
-Now you can run the script using the command `getas`.
 
 ### Recommended language configuration
 
