@@ -5,6 +5,7 @@
 - [Usage Examples](#usage-examples)
 - [Using getas on Windows](#using-getas-on-windows)
 - [Screenshots](#screenshots)
+- [Русская версия](README_ru.md)
 
 `getas` is a convenient tool for analyzing `Autonomous Systems` (AS) information, routes, and `network aggregation`. The script supports working with IP addresses, networks, domain names, or AS numbers. Its key features include retrieving detailed `AS` information, aggregating networks, and formatted output in both `English` and `Russian`.
 
