@@ -17,6 +17,25 @@ getas youtube.com -r
 ```
 
 
+## Installation
+### Download
+
+#### Clone the latest version of `getas` from `GitHub`:
+
+```
+git clone https://github.com/mnbarinov/getas.git
+cd getas
+chmod +x $(pwd)/getas.py
+```
+
+### Install the script
+
+To make the script easier to use, create a symbolic link:
+
+```
+sudo ln -s $(pwd)/getas.py /usr/local/bin/getas
+```
+
 ### Install dependencies
 
 The script requires Python 3 and the whois command. Install them if they are not already available:
@@ -33,13 +52,6 @@ sudo dnf install python3 python3-pip whois
 ```
 
 
-### Install the script
-
-To make the script easier to use, create a symbolic link:
-
-```
-sudo ln -s $(pwd)/getas.py /usr/local/bin/getas
-```
 
 Now you can run the script using the command `getas`.
 
