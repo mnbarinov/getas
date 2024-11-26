@@ -121,3 +121,73 @@ To run the `getas.py` script on Windows, you need to set up Python and follow a 
 - Download Python from the [official website](https://www.python.org/downloads/).
 - Install `Python`, ensuring that the `Add Python to PATH` option is selected during installation.
 - Verify the installation by running the following command in the Command Prompt:
+
+```
+python --version
+```
+
+
+### Step 2. Download the script
+
+Download the `getas.py` script and save it in a convenient location, such as `C:\getas\`.
+
+### Step 3. Run the script
+
+#### To run the script, open the Command Prompt and follow these steps:
+
+##### Navigate to the directory where `getas.py` is located. For example:
+
+
+```
+cd C:\getas
+```
+
+##### Execute the command to retrieve data. For example:
+
+```
+python getas.py youtube.com -r
+```
+
+
+### Step 4. Interpret the results
+
+The script will return a list of networks associated with the specified domain (e.g., YouTube or Google). These results can be used for analysis or routing configuration.
+
+### Tips for Windows usage
+
+To simplify execution, you can create a shortcut or a batch file (.bat) with the following content:
+
+```
+@echo off
+python C:\getas\getas.py %*
+```
+
+Save the file as `getas.bat`, and you can run it directly from the Command Prompt:
+
+```
+getas youtube.com -r
+```
+
+Now you can conveniently use `getas` on Windows.
+
+---
+
+## Screenshots
+
+<img src="getas_screenshot1.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+<img src="getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+<img src="getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+
+---
+
+## Author
+
+Mikhail Barinov
+
+ - GitHub: https://github.com/mnbarinov
+
+ - Website: https://mbarinov.ru
+
+<img src="getas-footer.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
