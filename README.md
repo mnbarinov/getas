@@ -1,5 +1,5 @@
 # getas — Retrieve AS information and routes
-<img src="getas_banner.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_banner.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 - [Installation](#installation)
 - [Usage Examples](#usage-examples)
@@ -186,11 +186,11 @@ Now you can conveniently use `getas` on Windows.
 
 ## Screenshots
 
-<img src="getas_screenshot1.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_screenshot1.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
-<img src="getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
-<img src="getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 ---
 
@@ -202,4 +202,4 @@ Mikhail Barinov
 
  - Website: https://mbarinov.ru
 
-<img src="getas-footer.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas-footer.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
