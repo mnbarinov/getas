@@ -46,16 +46,16 @@ This script analyzes AS and routes with network aggregation.
   getas 15169 --tolerance 8
   getas 15169 --no-merge
   getas 15169 --tolerance 8 -m --no-merge
-
+  
   getas 8.8.8.8
   getas 8.8.8.8 -r
-  getas 8.8.8.8 -m
+  getas 8.8.8.8 -m 
   getas mbarinov.ru -r -m --no-merge
 
   getas --help
   getas --help --lang ru
 
-getas by Mikhail Barinov, version 1.0.3 (27.11.2024)
+getas by Mikhail Barinov, version 1.0.2 (24.11.2024)
     https://mbarinov.ru
     https://github.com/mnbarinov/getas
 """,
@@ -98,16 +98,16 @@ getas by Mikhail Barinov, version 1.0.3 (27.11.2024)
   getas 15169 --tolerance 8
   getas 15169 --no-merge
   getas 15169 --tolerance 8 -m --no-merge
-
+  
   getas 8.8.8.8
   getas 8.8.8.8 -r
-  getas 8.8.8.8 -m
+  getas 8.8.8.8 -m 
   getas mbarinov.ru -r -m --no-merge
 
   getas --help
   getas --help --lang en
 
-getas by Mikhail Barinov, version 1.0.3 (27.11.2024)
+getas by Mikhail Barinov, version 1.0.2 (24.11.2024)
     https://mbarinov.ru
     https://github.com/mnbarinov/getas
 """,
@@ -278,7 +278,7 @@ def get_system_language():
 def get_language_code():
     """Вернуть 'ru' для русскоязычных, белорусскоязычных и украиноязычных систем, иначе 'en'."""
     system_language = get_system_language()
-
+    
     if system_language in ['ru', 'be', 'uk']:
         return 'ru'
     else:
@@ -314,11 +314,11 @@ def main():
         initial_lang = get_initial_lang()
 
         #
-
+        
         global args
 
         parser = arg_parse(lang=initial_lang)
-
+        
         args = parser.parse_args()
 
         if len(sys.argv) == 1:
@@ -331,7 +331,7 @@ def main():
         if input_value.lower() in {"help", "--help", "-h"}:
             print_usage(args.lang)
             sys.exit(0)
-
+        
 
         if not input_value.isdigit():
             ip = get_ip_from_hostname(input_value)
@@ -374,9 +374,9 @@ def main():
                     ip = str(net.network_address)  # Получаем IP-адрес сети
                     mask = net.prefixlen  # Получаем длину префикса (маску подсети)
                     print(f"{ip}/{cidr_to_netmask(mask)}")  # Печатаем IP-адрес и маску в нужном формате
-                else:
+                else:    
                     print(net)
-
+                    
         else:
             as_info = fetch_as_info(input_value)
             if not as_info:
@@ -385,7 +385,7 @@ def main():
 
             print_as_info(as_info, lang=args.lang)
 
-
+            
             if args.r:
                 if args.no_merge == False:
                     print(translate("merged_networks", args.lang))
@@ -397,8 +397,8 @@ def main():
                     routes = fetch_routes(as_number)
                     if(len(routes) > 50):
                         print(translate(f"please_wait", args.lang))
-
-
+                                        
+                    
                     if args.no_merge == False:
                         merged_routes = merge_networks(routes, args.tolerance)
                         filtered_routes = filter_nested_networks(merged_routes)
@@ -411,7 +411,7 @@ def main():
                             ip = str(net.network_address)  # Получаем IP-адрес сети
                             mask = net.prefixlen  # Получаем длину префикса (маску подсети)
                             print(f"{ip}/{cidr_to_netmask(mask)}")  # Печатаем IP-адрес и маску в нужном формате
-                        else:
+                        else:    
                             print(net)
 
     except KeyboardInterrupt:
@@ -422,4 +422,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-
+    
