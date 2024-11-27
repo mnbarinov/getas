@@ -141,7 +141,7 @@ To run the `getas.py` script on Windows, you need to set up Python and follow a 
 python --version
 ```
 
-### Step 2. [Download and Setup Whois](https://download.sysinternals.com/files/WhoIs.zip)
+### Step 2. [Download and Install Whois](https://download.sysinternals.com/files/WhoIs.zip)
 
 ### Step 3. Download the script
 
