@@ -141,12 +141,13 @@ To run the `getas.py` script on Windows, you need to set up Python and follow a 
 python --version
 ```
 
+### Step 2. [Download and Setup Whois](https://download.sysinternals.com/files/WhoIs.zip)
 
-### Step 2. Download the script
+### Step 3. Download the script
 
 Download the `getas.py` script and save it in a convenient location, such as `C:\getas\`.
 
-### Step 3. Run the script
+### Step 4. Run the script
 
 #### To run the script, open the Command Prompt and follow these steps:
 
@@ -164,7 +165,7 @@ python getas.py youtube.com -r
 ```
 
 
-### Step 4. Interpret the results
+### Step 5. Interpret the results
 
 The script will return a list of networks associated with the specified domain (e.g., YouTube or Google). These results can be used for analysis or routing configuration.
 
