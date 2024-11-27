@@ -1,5 +1,5 @@
 # getas — Retrieve AS information and routes
-<img src="getas_banner.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_banner.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 - [Установка](#установка)
 - [Примеры использования](#примеры-использования)
@@ -153,11 +153,11 @@ getas youtube.com -r
 
 ## Снимки экрана
 
-<img src="getas_screenshot1.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_screenshot1.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
-<img src="getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_screenshot2.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
-<img src="getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas_screenshot3.png" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 ---
 
@@ -169,4 +169,4 @@ getas youtube.com -r
 
  - Сайт: https://mbarinov.ru
 
-<img src="getas-footer.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
+<img src="images/getas-footer.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
