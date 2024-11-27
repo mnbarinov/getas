@@ -103,6 +103,7 @@ getas help
 
 ---
 
+<img src="images/getas_banner2.jpg" alt="getas by Mikhail Barinov - Retrieve AS information and routes" width=100% align=center >
 
 ## Использование getas в Windows
 
