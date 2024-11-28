@@ -222,10 +222,67 @@ def print_as_info(as_info, lang="en"):
 
 
 
-def merge_networks(networks, tolerance):
-    """Итеративное объединение сетей с учетом допуска."""
-    networks = sorted(networks)  # Сортируем сети
+import ipaddress
+
+def merge_networks(networks, tolerance=0):
+    """
+    Итеративное объединение IPv4 и IPv6 сетей с учетом допуска.
+    Объединяет сети до тех пор, пока возможно объединение.
+    """
+    networks = sorted(networks, key=lambda net: (net.version, net.network_address, net.prefixlen))
+
+    while True:
+        merged = []
+        skip = set()
+
+        for i, net1 in enumerate(networks):
+            if i in skip:
+                continue
+
+            combined = False
+            for j, net2 in enumerate(networks[i + 1:], start=i + 1):
+                if j in skip:
+                    continue
+
+                try:
+                    # Суперсеть для net1
+                    supernet = net1.supernet(new_prefix=net1.prefixlen - 1)
+
+                    if net2.subnet_of(supernet):
+                        # Проверяем допустимое различие в адресах
+                        address_diff = abs(net2.num_addresses - net1.num_addresses)
+                        if address_diff <= tolerance:
+                            merged.append(supernet)
+                            skip.update({i, j})
+                            combined = True
+                            break
+                except ValueError:
+                    pass  # Если объединение невозможно, пропускаем
+
+            if not combined:
+                merged.append(net1)
+
+        # Если объединение больше невозможно, выходим из цикла
+        if len(merged) == len(networks):
+            break
+
+        networks = sorted(merged, key=lambda net: (net.version, net.network_address, net.prefixlen))
+
+    return merged
+
+
+def merge_networks6(networks, tolerance=0):
+    """Рекурсивное объединение сетей с учетом допуска."""
+    networks = sorted(networks, key=lambda net: (net.network_address, net.prefixlen))
     merged = networks[:]
+
+    def can_merge(net1, net2):
+        """Проверяет, можно ли объединить две сети."""
+        try:
+            supernet = net1.supernet(new_prefix=net1.prefixlen - 1)
+            return net2.subnet_of(supernet)
+        except ValueError:
+            return False
 
     while True:
         new_merged = []
@@ -240,14 +297,12 @@ def merge_networks(networks, tolerance):
                 if j in skip:
                     continue
 
-                supernet = net1.supernet(new_prefix=net1.prefixlen - 1)
-                if net2.subnet_of(supernet):
-                    address_diff = abs(net2.num_addresses - net1.num_addresses)
-                    if address_diff <= tolerance:
-                        new_merged.append(supernet)
-                        skip.update({i, j})
-                        combined = True
-                        break
+                if can_merge(net1, net2):
+                    supernet = net1.supernet(new_prefix=net1.prefixlen - 1)
+                    new_merged.append(supernet)
+                    skip.update({i, j})
+                    combined = True
+                    break
 
             if not combined:
                 new_merged.append(net1)
@@ -255,18 +310,25 @@ def merge_networks(networks, tolerance):
         if len(new_merged) == len(merged):
             break
 
-        merged = sorted(new_merged)
+        merged = sorted(new_merged, key=lambda net: (net.network_address, net.prefixlen))
 
     return merged
 
 
+
 def filter_nested_networks(networks):
-    """Удаляет сети, вложенные в более крупные."""
+    """
+    Удаляет вложенные сети (подсети более крупных сетей).
+    """
+    networks = sorted(networks, key=lambda net: (net.version, net.network_address, net.prefixlen))
     filtered = []
+
     for net in networks:
-        if not any(net != other and net.subnet_of(other) for other in networks):
+        if not any(net != other and net.subnet_of(other) for other in filtered):
             filtered.append(net)
+
     return filtered
+
 
 
 def print_usage(lang="en"):
@@ -322,6 +384,11 @@ def cidr_to_netmask(cidr: str) -> str:
     network = ipaddress.IPv4Network(f'0.0.0.0/{cidr}', strict=False)
     # Возвращаем строковое представление маски подсети
     return str(network.netmask)
+
+
+
+
+
 
 def main():
     try:
@@ -452,8 +519,15 @@ def main():
                         # ipv6
                         if args.v6 or args.v6o:
                             routes6 = fetch_routes(as_number, ver=6)
+
+                            if args.no_merge == False:
+                                merged_routes = merge_networks6(routes6, args.tolerance)
+                                filtered_routes = filter_nested_networks(merged_routes)
+                            else:
+                                filtered_routes = filter_nested_networks(routes6)
+                            
                             print(f"\nIPv6:")
-                            for net6 in routes6:
+                            for net6 in filtered_routes:
                                 print(net6)
 
     except KeyboardInterrupt:
