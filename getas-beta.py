@@ -472,8 +472,15 @@ def main():
              # ipv6
             if args.v6 or args.v6o:
                 routes6 = fetch_routes(input_value, ver=6)
+
+                if args.no_merge == False:
+                    merged_routes = merge_networks6(routes6, args.tolerance)
+                    filtered_routes = filter_nested_networks(merged_routes)
+                else:
+                    filtered_routes = filter_nested_networks(routes6)
+                
                 print(f"\nIPv6:")
-                for net6 in routes6:
+                for net6 in filtered_routes:
                     print(net6)
 
 
