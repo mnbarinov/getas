@@ -31,17 +31,20 @@ getas 1.1.1.1 -w
 # Get all routes (Table mode) / Все маршруты в виде таблицы
 getas AS13335 -t
 
-# Search by domain with route merging / Поиск по домену с объединением сетей
-getas google.com -r
+# Search by domain with no route merging / Поиск по домену без объединения сетей
+getas google.com --no-merge
 ```
 
 ## Options / Параметры
 
 | Flag | Description | Описание |
 | :--- | :--- | :--- |
+| `-h` | Help | Справка |
 | `-w` | Whois only (no routes) | Только информация о владельце |
-| `-r` | Retrieve routes for IP/Domain | Загрузить маршруты для IP/Домена |
 | `-t` | Table output | Вывод в виде таблицы |
 | `-m` | Show netmask (decimal) | Показать маску в десятичном виде |
+| `-4` | Show only IPv4 routes | Показывать только маршруты IPv4 |
+| `-6` | Show only IPv6 routes | Показывать только маршруты IPv6 |
 | `--no-merge` | Disable route merging | Отключить объединение сетей |
 | `--no-pager` | Disable pagination | Отключить разбивку на страницы |
+| `--lang {ru, en}` | Language for output | Язык для вывода |

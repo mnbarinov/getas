@@ -21,8 +21,10 @@ TRANSLATIONS = {
         "arg_nomerge": "Disable network merging.",
         "arg_ipv4": "Show only IPv4.",
         "arg_ipv6": "Show only IPv6.",
+        "arg_lang": "Force language (ru, en).",
         "error_domain": "Error: Could not resolve hostname.",
         "error_invalid_ip": "Error: Invalid IP format.",
+        "no_info": "No information found for:",
         "no_routes": "No routes found for AS",
         "networks": "\033[1mNetworks (aggregated):\033[0m",
         "networks_raw": "\033[1mNetworks (raw):\033[0m",
@@ -42,8 +44,10 @@ TRANSLATIONS = {
         "arg_nomerge": "Отключить объединение сетей.",
         "arg_ipv4": "Только IPv4.",
         "arg_ipv6": "Только IPv6.",
+        "arg_lang": "Принудительный язык (ru, en).",
         "error_domain": "Ошибка: Не удалось разрешить домен.",
         "error_invalid_ip": "Ошибка: Неверный формат IP.",
+        "no_info": "Информация не найдена для:",
         "no_routes": "Нет маршрутов для AS",
         "networks": "\033[1mСети (агрегированные):\033[0m",
         "networks_raw": "\033[1mСети (исходные):\033[0m",
@@ -138,17 +142,15 @@ def format_output(routes, raw_routes, args, lang):
     return out.getvalue()
 
 def custom_pager(text, lang):
-    """Собственный встроенный пейджер без использования внешних программ."""
     lines = text.splitlines()
     term_height = shutil.get_terminal_size((80, 24)).lines
-    chunk_size = term_height - 1 # Оставляем 1 строку для подсказки
+    chunk_size = term_height - 1
 
     for i in range(0, len(lines), chunk_size):
         print('\n'.join(lines[i:i+chunk_size]))
         if i + chunk_size < len(lines):
             try:
                 reply = input(translate("pager_prompt", lang))
-                # ANSI-магия: поднимаем курсор вверх на 1 строку и очищаем её
                 sys.stdout.write("\033[1A\033[2K\r")
                 if reply.strip().lower() == 'q':
                     break
@@ -158,13 +160,25 @@ def custom_pager(text, lang):
                 break
 
 def main():
+    # 1. Начальное определение языка
     try:
         locale.setlocale(locale.LC_ALL, '')
         sys_lang = (locale.getlocale()[0] or "en")[:2].lower()
     except: sys_lang = "en"
     lang = "ru" if sys_lang in ["ru", "be", "uk"] else "en"
 
-    parser = argparse.ArgumentParser(description=translate("arg_description", lang), formatter_class=argparse.RawDescriptionHelpFormatter)
+    # 2. Предварительный парсинг для флага --lang
+    temp_parser = argparse.ArgumentParser(add_help=False)
+    temp_parser.add_argument("--lang", choices=["ru", "en"])
+    temp_args, _ = temp_parser.parse_known_args()
+    if temp_args.lang:
+        lang = temp_args.lang
+
+    # 3. Основной парсер
+    parser = argparse.ArgumentParser(
+        description=translate("arg_description", lang), 
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("input_value", nargs="?", help=translate("arg_input", lang))
     parser.add_argument("-w", "--who", action="store_true", help=translate("arg_who", lang))
     parser.add_argument("-r", action="store_true", help=translate("arg_retrieve", lang))
@@ -177,7 +191,6 @@ def main():
     parser.add_argument("--lang", choices=["ru", "en"], help=translate("arg_lang", lang))
 
     args = parser.parse_args()
-    if args.lang: lang = args.lang
     if not args.input_value:
         parser.print_help(); sys.exit(0)
 
@@ -231,7 +244,6 @@ def main():
         term_height = shutil.get_terminal_size((80, 24)).lines
         text_height = final_text.count('\n')
 
-        # Если вывод короче экрана, пейджер отключен или вывод идет в файл/pipe
         if args.no_pager or not sys.stdout.isatty() or text_height < term_height:
             print(final_text, end="")
         else:
@@ -242,4 +254,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
