@@ -11,7 +11,7 @@ A lightweight, fast, and dependency-free CLI utility to retrieve Autonomous Syst
 
 ---
 
-# getas-tool (Русский)
+# getas-tool
 
 Легкая и быстрая консольная утилита без внешних зависимостей для получения информации об Автономных Системах (AS) и маршрутах BGP напрямую из WHOIS-серверов (Cymru и RADB).
 
@@ -37,11 +37,10 @@ getas google.com -r
 
 ## Options / Параметры
 
-Flag,Description,Описание
--w,Whois only (no routes),Только информация о владельце
--r,Retrieve routes for IP/Domain,Загрузить маршруты для IP/Домена
--t,Table output,Вывод в виде таблицы
--m,Show netmask (decimal),Показать маску в десятичном виде
---no-merge,Disable route merging,Отключить объединение сетей
-
-
+| Flag | Description | Описание |
+| :--- | :--- | :--- |
+| `-w` | Whois only (no routes) | Только информация о владельце |
+| `-r` | Retrieve routes for IP/Domain | Загрузить маршруты для IP/Домена |
+| `-t` | Table output | Вывод в виде таблицы |
+| `-m` | Show netmask (decimal) | Показать маску в десятичном виде |
+| `--no-merge` | Disable route merging | Отключить объединение сетей |
