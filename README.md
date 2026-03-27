@@ -44,3 +44,4 @@ getas google.com -r
 | `-t` | Table output | Вывод в виде таблицы |
 | `-m` | Show netmask (decimal) | Показать маску в десятичном виде |
 | `--no-merge` | Disable route merging | Отключить объединение сетей |
+| `--no-pager` | Disable pagination | Отключить разбивку на страницы |
