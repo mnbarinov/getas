@@ -5,6 +5,7 @@
 <h1 align="center">GETAS</h1>
 
 <p align="center">
+  <img src="https://img.shields.io/github/release/mnbarinov/getas.svg" alt="Python Version">
   <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python Version">
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
 </p>
@@ -16,12 +17,12 @@
 
 ---
 
-### Demo
+## ▸ Demo
 ![GETAS Demo](assets/demo.svg)
 
 ---
 
-## Features
+## ✨ Features
 - **Fast AS Lookup**: Get owner information by IP, Domain, or ASN.
 - **Route Aggregation**: Automatically merges adjacent networks for a cleaner view (can be disabled).
 - **Smart Paging**: Built-in terminal-aware pager that doesn't feel like a separate app.
@@ -34,7 +35,7 @@
 
 Легкая и быстрая консольная утилита без внешних зависимостей для получения информации об Автономных Системах (AS) и маршрутах BGP напрямую из WHOIS-серверов (Cymru и RADB).
 
-## Особенности
+## ✨ Особенности
 - **Быстрый поиск**: Получение информации о владельце по IP, домену или номеру AS.
 - **Агрегация маршрутов**: Автоматическое объединение смежных сетей для удобства (можно отключить).
 - **Умный пейджер**: Встроенная постраничная навигация, учитывающая высоту терминала.
