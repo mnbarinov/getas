@@ -5,14 +5,19 @@
 <h1 align="center">GETAS</h1>
 
 <p align="center">
-  <img src="[https://img.shields.io/badge/python-3.8+-blue.svg](https://img.shields.io/badge/python-3.8+-blue.svg)" alt="Python Version">
-  <img src="[https://img.shields.io/badge/license-MIT-green.svg](https://img.shields.io/badge/license-MIT-green.svg)" alt="License">
+  <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
 </p>
 
 <p align="center">
   <strong>Your AS Insights at the CLI</strong><br>
   A lightweight tool to retrieve Autonomous System information and BGP routes.
 </p>
+
+---
+
+### Demo
+![GETAS Demo](assets/demo.svg)
 
 ---
 
