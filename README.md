@@ -167,3 +167,4 @@ sudo curl -L [https://raw.githubusercontent.com/mnbarinov/getas/master/getas/mai
 sudo chmod +x /usr/bin/getas
 ```
 
+© 2026 Mikhail Barinov. Licensed under the MIT License.
