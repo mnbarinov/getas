@@ -146,7 +146,7 @@ sudo dnf install ./getas-1.0.0-1.noarch.rpm
 #### Via Python Pip (Universal)
 If you have Python installed, you can install the tool directly from the source:
 ```bash
-git clone [https://github.com/mnbarinov/getas.git](https://github.com/mnbarinov/getas.git)
+git clone https://github.com/mnbarinov/getas.git
 cd getas
 pip install .
 ```
@@ -155,7 +155,7 @@ pip install .
 #### Arch Linux (AUR)
 If you are using Arch Linux, you can build the package using the provided PKGBUILD:
 ```bash
-git clone [https://github.com/mnbarinov/getas.git](https://github.com/mnbarinov/getas.git)
+git clone https://github.com/mnbarinov/getas.git
 cd getas
 makepkg -si
 ```
@@ -163,8 +163,9 @@ makepkg -si
 #### Manual Installation (Single file)
 If you just want the script without any package management:
 ```bash
-sudo curl -L [https://raw.githubusercontent.com/mnbarinov/getas/master/getas/main.py](https://raw.githubusercontent.com/mnbarinov/getas/master/getas/main.py) -o /usr/bin/getas
+sudo curl -L https://raw.githubusercontent.com/mnbarinov/getas/master/getas/main.py -o /usr/bin/getas
 sudo chmod +x /usr/bin/getas
 ```
+---
 
 © 2026 Mikhail Barinov. Licensed under the MIT License.
