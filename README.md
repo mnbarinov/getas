@@ -1,6 +1,20 @@
-# Getas Tool
+<p align="center">
+  <img src="assets/getas_social.png" alt="GETAS Logo" width="600">
+</p>
 
-A lightweight, fast, and dependency-free CLI utility to retrieve Autonomous System (AS) information and BGP routes directly from WHOIS servers (Cymru and RADB).
+<h1 align="center">GETAS</h1>
+
+<p align="center">
+  <img src="[https://img.shields.io/badge/python-3.8+-blue.svg](https://img.shields.io/badge/python-3.8+-blue.svg)" alt="Python Version">
+  <img src="[https://img.shields.io/badge/license-MIT-green.svg](https://img.shields.io/badge/license-MIT-green.svg)" alt="License">
+</p>
+
+<p align="center">
+  <strong>Your AS Insights at the CLI</strong><br>
+  A lightweight tool to retrieve Autonomous System information and BGP routes.
+</p>
+
+---
 
 ## Features
 - **Fast AS Lookup**: Get owner information by IP, Domain, or ASN.
@@ -11,7 +25,7 @@ A lightweight, fast, and dependency-free CLI utility to retrieve Autonomous Syst
 
 ---
 
-# getas-tool
+# getas
 
 Легкая и быстрая консольная утилита без внешних зависимостей для получения информации об Автономных Системах (AS) и маршрутах BGP напрямую из WHOIS-серверов (Cymru и RADB).
 
@@ -114,6 +128,7 @@ You can download the latest pre-built packages for your distribution from the [R
 sudo dpkg -i getas_1.0.0_all.deb
 # If there are missing dependencies:
 sudo apt-get install -f
+```
 
 #### For ALT Linux, Fedora, CentOS, RedOS (.rpm):
 ```bash
