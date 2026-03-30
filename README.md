@@ -5,9 +5,11 @@
 <h1 align="center">GETAS</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/release/mnbarinov/getas.svg" alt="Python Version">
+  <a href="https://pypi.org/project/getas/"><img src="https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=fff" alt="Python Version"></a>
+  <img src="https://img.shields.io/github/release/mnbarinov/getas.svg" alt="Release">
   <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python Version">
   <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
+
 </p>
 
 <p align="center">
@@ -142,6 +144,13 @@ sudo apt-get install -f
 sudo apt-get install ./getas-1.0.0-1.noarch.rpm
 # Fedora / CentOS:
 sudo dnf install ./getas-1.0.0-1.noarch.rpm
+```
+
+#### Via Python PIP
+```
+pip install getas
+# or
+pipx install getas
 ```
 
 #### Via Python Pip (Universal)
