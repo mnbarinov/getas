@@ -161,6 +161,7 @@ def main():
         description=translate("arg_description", lang), 
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
+    parser.add_argument("-v", "--version", action="version", version="getas 1.1.1")
     parser.add_argument("input_values", nargs="*", help=translate("arg_input", lang))
     parser.add_argument("-w", "--who", action="store_true", help=translate("arg_who", lang))
     parser.add_argument("-r", action="store_true", help=translate("arg_retrieve", lang))

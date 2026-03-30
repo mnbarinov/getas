@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Параметры релиза
-VERSION="1.0.0"
+VERSION="1.1.1"
 OUTPUT_DIR="dist"
 SOURCE_FILE="getas/main.py"
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/getas_social.png" alt="GETAS Logo" width="600">
+  <img src="https://raw.githubusercontent.com/mnbarinov/getas/refs/heads/master/assets/getas_social.png" alt="GETAS Logo" width="600">
 </p>
 
 <h1 align="center">GETAS</h1>
@@ -20,7 +20,7 @@
 ---
 
 ## ▸ Demo
-![GETAS Demo](assets/demo.svg)
+![GETAS Demo](https://raw.githubusercontent.com/mnbarinov/getas/refs/heads/master/assets/demo.svg)
 
 ---
 
@@ -79,6 +79,9 @@ getas AS15169 -t -4
 getas AS15169 -t -6
 ```
 
+### Get multi ASes, IPs, NETs, Domains at once Получение информации о нескольких автономных системах, сетях или доменах одновременно
+getas AS15169 AS13335  -t -4
+
 ### ⚙️ Advanced Options / Продвинутые опции
 
 Fine-tune the output formatting.
@@ -100,6 +103,12 @@ getas 8.8.8.8 --lang ru
 # Disable built-in pager (useful for scripts)
 # Отключить встроенный пейджер (полезно для перенаправления вывода)
 getas AS13335 --no-pager > routes.txt
+
+# Get result in JSON format / JSON формат 
+getas AS13335 --json
+
+If domain is blocked / Если домен заблокирован
+getas $(dig @8.8.8.8 example.com +short) -r -t
 ```
 
 #### Examples / Примеры
@@ -109,7 +118,8 @@ getas AS13335 --no-pager > routes.txt
 | Full table (EN) | getas AS13335 -t --lang en |
 | All IPv6 routes | getas AS15169 -t -6 |
 | Raw data export | getas AS13335 --no-merge --no-pager |
-
+| JSON output | getas AS133 --json |
+| Multi AS lookup | getas AS1333 AS13335 |
 
 ## Options / Параметры
 
@@ -123,6 +133,7 @@ getas AS13335 --no-pager > routes.txt
 | `-6` | Show only IPv6 routes | Показывать только маршруты IPv6 |
 | `--no-merge` | Disable route merging | Отключить объединение сетей |
 | `--no-pager` | Disable pagination | Отключить разбивку на страницы |
+| `--json` | Output in JSON format | Вывод в формате JSON |
 | `--lang {ru, en}` | Language for output | Язык для вывода |
 
 
